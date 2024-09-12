@@ -1,4 +1,4 @@
-package ch08;
+package ch08.ex8_1;
 
 public class MainHero {
     public static void main(String[] args) {

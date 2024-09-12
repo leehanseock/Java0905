@@ -1,4 +1,4 @@
-package ch08;
+package ch08.ex8_1;
 class Hero{
     private String name;
     private int power;
