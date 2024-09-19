@@ -25,13 +25,13 @@ public class MainAccount {
         System.out.printf("입금할 금액: ");
         int money1 = scanner2.nextInt();
         account.deposit(money1);
-        System.out.println(account.getBalance());
+        System.out.printf("%s님의 계좌 현재 잔액은 %d원입니다.\n",account.getName(),account.getBalance());
 
         //통장에서 출금
         System.out.printf("출금할 금액: ");
         int money2 = scanner2.nextInt();
         account.withdraw(money2);
-        System.out.println(account.getBalance());
+        System.out.printf("%s님의 계좌 현재 잔액은 %d원입니다.\n",account.getName(),account.getBalance());
 
         scanner1.close();
         scanner2.close();
