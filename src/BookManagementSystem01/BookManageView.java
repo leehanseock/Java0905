@@ -7,14 +7,17 @@ public class BookManageView {
     //BookManageView 클래스에서 사용할 입력값을 받은 스캐너 객체 생성
     Scanner input02 = new Scanner(System.in);
 
+    //BookManageService 내 메소드를 불러오기 위한 객체 생성
+    BookManageService service = new BookManageService();
+
     //메뉴 출력 메소드
-    public void showMenu(){
+    public void showMenu() {
         System.out.println("============================도서 관리 시스템============================");
         System.out.println("Menu : 1. 도서 등록 2. 도서 조회 3. 도서 정보 수정 4. 도서 정보 삭제 5. 도서 정보 출력");
         System.out.print("메뉴 선택 : ");
         try {
             int answer00 = input02.nextInt();
-            switch(answer00){
+            switch (answer00) {
                 case 1:
                     System.out.println("1번 도서 등록 선택");
                     break;
@@ -36,34 +39,29 @@ public class BookManageView {
             }
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
-        } finally {
-            // Scanner 자원 해제
-            input02.close();
         }
     }
 
     //책 추가 여부 확인 메소드
-    public void addBookPrompt(){
+    public void addBookPrompt() {
         System.out.println("새로운 책을 시스템에 등록하시겠습니까?(y/n)");
         try {
             //사용자 입력
             String answer01 = input02.next();
             //사용자 입력이 y나 Y일 때
             if (answer01.equalsIgnoreCase("y")) {
-
-            } else if (answer01.equalsIgnoreCase("n")){
-
+                //서비스 메소드의 도서 추가 메소드 호출
+                service.addBook();
+            } else if (answer01.equalsIgnoreCase("n")) {
+                System.out.println("서비스 종료");
             } else {
                 System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
             }
 
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
-        } finally {
-            // Scanner 자원 해제
-            input02.close();
         }
 
-    }
 
+    }
 }

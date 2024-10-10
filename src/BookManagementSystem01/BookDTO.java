@@ -7,11 +7,11 @@ public class BookDTO {
     private String bookName;
     private String author;
     private String publisher;
-    private String price;
+    private int price;
     private LocalDate publicationDate;
     private int pages;
 
-    public BookDTO(long ISBN, String bookName, String author, String publisher, String price, LocalDate publicationDate, int pages) {
+    public BookDTO(long ISBN, String bookName, String author, String publisher, int price, LocalDate publicationDate, int pages) {
         this.ISBN = ISBN;
         this.bookName = bookName;
         this.author = author;
@@ -53,11 +53,11 @@ public class BookDTO {
         this.publisher = publisher;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
