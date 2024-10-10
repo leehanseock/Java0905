@@ -40,7 +40,8 @@ public class BookManageService {
         System.out.print("저자명:");
         String author = "";
         try {
-            author = input01.next();
+            author = input01.nextLine();
+            input01.nextLine();
         } catch(InputMismatchException e) {
             System.out.println("잘못된 입력입니다.");
             input01.next();
@@ -49,7 +50,8 @@ public class BookManageService {
         System.out.print("출판사:");
         String publisher = "";
         try {
-            publisher = input01.next();
+            publisher = input01.nextLine();
+            input01.nextLine();
         } catch(InputMismatchException e) {
             System.out.println("잘못된 입력입니다.");
             input01.next();
@@ -100,7 +102,7 @@ public class BookManageService {
 
         //테스트
         for (int i = 0; i < BookList.size() ; i++){
-            System.out.printf("[%d] %s ",i+1, BookList.get(i).getBookName());
+            System.out.printf("[%d] %s ",i+1, BookList.get(i).toString());
         }
     }
     //Read

@@ -76,4 +76,17 @@ public class BookDTO {
     public void setPages(int pages) {
         this.pages = pages;
     }
+
+    @Override
+    public String toString() {
+        return "BookDTO{" +
+                "ISBN=" + ISBN +
+                ", bookName='" + bookName + '\'' +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", price=" + price +
+                ", publicationDate=" + publicationDate +
+                ", pages=" + pages +
+                '}';
+    }
 }
