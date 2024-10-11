@@ -108,7 +108,7 @@ public class BookManageService {
 
         //테스트
         for (int i = 0; i < BookList.size() ; i++){
-            System.out.printf("[%d] %s ",i+1, BookList.get(i).toString());
+            System.out.printf("[%d] %s \n",i+1, BookList.get(i).toString());
         }
     }
     //Read
