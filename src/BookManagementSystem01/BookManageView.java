@@ -20,6 +20,7 @@ public class BookManageView {
             switch (answer00) {
                 case 1:
                     System.out.println("1번 도서 등록 선택");
+                    addBookPrompt();
                     break;
                 case 2:
                     System.out.println("2번 도서 조회 선택");

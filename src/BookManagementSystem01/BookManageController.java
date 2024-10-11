@@ -6,7 +6,7 @@ public class BookManageController {
     public static void main(String[] args) {
         BookManageView viewer = new BookManageView();
         viewer.showMenu();
-        viewer.addBookPrompt();
+
     }
 
 }
