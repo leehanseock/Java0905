@@ -24,6 +24,7 @@ public class BookManageView {
                     break;
                 case 2:
                     System.out.println("2번 도서 조회 선택");
+                    searchBookPrompt();
                     break;
                 case 3:
                     System.out.println("3번 도서 정보 수정 선택");
@@ -58,11 +59,53 @@ public class BookManageView {
             } else {
                 System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
             }
-
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
         }
-
-
     }
+
+        //도서 조회를 위한 필드 선택 메소드
+        public void searchBookPrompt() {
+            System.out.println("도서정보를 조회하시겠습니까?(y/n)");
+            try {
+                //사용자 입력(y/n)
+                String answer01 = input02.next();
+                //사용자 입력이 y나 Y일 때
+                if (answer01.equalsIgnoreCase("y")) {
+                    try {
+                        System.out.println("========================도서 정보 카테고리========================");
+                        System.out.println("Menu : 1. ISBN(13자리) 2. 도서명 3. 저자명 4. 출판사");
+                        System.out.println("어떤 정보를 검색하시겠습니까?");
+                        //사용자 입력(카테고리 선택)
+                        int answer02 = input02.nextInt();
+                        switch (answer02) {
+                            case 1:
+                                // 도서 조회 메소드 호출
+                                service.searchBook(1);
+                                break;
+                            case 2:
+                                service.searchBook(2);
+                                break;
+                            case 3:
+                                service.searchBook(3);
+                                break;
+                            case 4:
+                                service.searchBook(4);
+                                break;
+                            default:
+                                System.out.println("유효하지 않은 옵션");
+                                break;
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("잘못된 입력입니다. 메뉴 번호로만 답해주십시오.");
+                    }
+                } else if (answer01.equalsIgnoreCase("n")) {
+                    System.out.println("서비스 종료");
+                } else {//'y'나 'n' 이외의 문자로 답했을 때
+                    System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+            }
+        }
 }

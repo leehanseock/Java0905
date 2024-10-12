@@ -111,7 +111,74 @@ public class BookManageService {
             System.out.printf("[%d] %s \n",i+1, BookList.get(i).toString());
         }
     }
-    //Read
+    //Read -도서 조회 메소드-
+    public void searchBook(int passedNum){
+        // 검색 결과와 일치하는 책 객체를 담을 ArrayList 선언
+        ArrayList<BookDTO> searchResult = new ArrayList<BookDTO>();
+
+        //도서 조회
+        try {
+            switch (passedNum) {
+                case 1:
+                    System.out.println("찾으려는 ISBN 13자리를 입력해주십시오.");
+                    long searchISBN =0;
+                    //사용자로부터 검색어 입력받기(ISBN 13자)
+                    searchISBN = input01.nextLong();
+                    input01.nextLine(); // 버퍼 비우기
+                    for (BookDTO searched : BookList) {
+                        if (searched.getISBN() == searchISBN ) {
+                            searchResult.add(searched);
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.println("찾으려는 도서명을 입력해주십시오.");
+                    String searchedTitle = "";
+                    //사용자로부터 검색어 입력받기(ISBN 13자)
+                    searchedTitle = input01.nextLine();
+                    input01.nextLine(); // 버퍼 비우기
+                    for (BookDTO searched : BookList) {
+                        if (searched.getBookName().equalsIgnoreCase(searchedTitle) ) {
+                            searchResult.add(searched);
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.println("찾으려는 저자명을 입력해주십시오.");
+                    String searchedAuthor = "";
+                    //사용자로부터 검색어 입력받기(ISBN 13자)
+                    searchedAuthor = input01.nextLine();
+                    input01.nextLine(); // 버퍼 비우기
+                    for (BookDTO searched : BookList) {
+                        if (searched.getBookName().equalsIgnoreCase(searchedAuthor) ) {
+                            searchResult.add(searched);
+                        }
+                    }
+                    break;
+                case 4:
+                    System.out.println("찾으려는 출판사명을 입력해주십시오.");
+                    String searchedPublisher = "";
+                    //사용자로부터 검색어 입력받기(ISBN 13자)
+                    searchedPublisher = input01.nextLine();
+                    input01.nextLine(); // 버퍼 비우기
+                    for (BookDTO searched : BookList) {
+                        if (searched.getBookName().equalsIgnoreCase(searchedPublisher) ) {
+                            searchResult.add(searched);
+                        }
+                    }
+                    break;
+                default:
+                    System.out.println("유효하지 않은 옵션");
+                    break;
+            }
+            //최종 검색 결과 출력
+            for (int i = 0; i < searchResult.size() ; i++){
+                System.out.printf("[%d] %s \n",i+1, searchResult.get(i).toString());
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+        }
+    }
 
     //Update
 

@@ -81,12 +81,12 @@ public class BookDTO {
     public String toString() {
         return "BookDTO{" +
                 "ISBN=" + ISBN +
-                ", bookName='" + bookName + '\'' +
-                ", author='" + author + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", price=" + price +
-                ", publicationDate=" + publicationDate +
-                ", pages=" + pages +
+                ", 도서명='" + bookName + '\'' +
+                ", 저자명='" + author + '\'' +
+                ", 출판사='" + publisher + '\'' +
+                ", 가격=" + price +
+                ", 발행일=" + publicationDate +
+                ", 쪽수=" + pages +
                 '}';
     }
 }
