@@ -124,7 +124,6 @@ public class BookManageService {
                     long searchISBN =0;
                     //사용자로부터 검색어 입력받기(ISBN 13자)
                     searchISBN = input01.nextLong();
-                    input01.nextLine(); // 버퍼 비우기
                     for (BookDTO searched : BookList) {
                         if (searched.getISBN() == searchISBN ) {
                             searchResult.add(searched);
@@ -136,9 +135,8 @@ public class BookManageService {
                     String searchedTitle = "";
                     //사용자로부터 검색어 입력받기(ISBN 13자)
                     searchedTitle = input01.nextLine();
-                    input01.nextLine(); // 버퍼 비우기
                     for (BookDTO searched : BookList) {
-                        if (searched.getBookName().equalsIgnoreCase(searchedTitle) ) {
+                        if (searched.getBookName().contains(searchedTitle) ) {
                             searchResult.add(searched);
                         }
                     }
@@ -148,9 +146,8 @@ public class BookManageService {
                     String searchedAuthor = "";
                     //사용자로부터 검색어 입력받기(ISBN 13자)
                     searchedAuthor = input01.nextLine();
-                    input01.nextLine(); // 버퍼 비우기
                     for (BookDTO searched : BookList) {
-                        if (searched.getBookName().equalsIgnoreCase(searchedAuthor) ) {
+                        if (searched.getAuthor().contains(searchedAuthor) ) {
                             searchResult.add(searched);
                         }
                     }
@@ -160,9 +157,8 @@ public class BookManageService {
                     String searchedPublisher = "";
                     //사용자로부터 검색어 입력받기(ISBN 13자)
                     searchedPublisher = input01.nextLine();
-                    input01.nextLine(); // 버퍼 비우기
                     for (BookDTO searched : BookList) {
-                        if (searched.getBookName().equalsIgnoreCase(searchedPublisher) ) {
+                        if (searched.getPublisher().contains(searchedPublisher) ) {
                             searchResult.add(searched);
                         }
                     }
