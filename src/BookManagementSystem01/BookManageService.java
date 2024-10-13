@@ -179,6 +179,9 @@ public class BookManageService {
     //Update
 
     //Delete
+    public void deleteBook(){
+        System.out.println("test");
+    }
 
     //초기화
     public void initiateBook(){

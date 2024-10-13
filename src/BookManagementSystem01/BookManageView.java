@@ -40,6 +40,7 @@ public class BookManageView {
                         break;
                     case 4:
                         System.out.println("4번 도서 정보 삭제 선택");
+                        deleteBookPrompt();
                         break;
                     case 5:
                         System.out.println("5번 도서 정보 출력 선택");
@@ -118,4 +119,30 @@ public class BookManageView {
                 System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
             }
         }
+
+    //도서 삭제 여부를 묻는 메소드
+    public void deleteBookPrompt(){
+        System.out.println("시스템에서 삭제할 도서가 있으십니까?(y/n)");
+        System.out.println("(ISBN 번호를 모르실 경우 0번을 누르십시오. 도서정보 조회로 넘어갑니다.)");
+        try {
+            //사용자 입력
+            String answer03 = input02.next();
+            //사용자 입력이 y나 Y일 때
+            if (answer03.equalsIgnoreCase("y")) {
+                //서비스 메소드의 도서 삭제 메소드 호출
+                service.deleteBook();
+            } else if (answer03.equalsIgnoreCase("n")) {
+                System.out.println("서비스 종료");
+            } else if (Integer.parseInt(answer03)==0){
+                // 도서 조회를 위한 필드 검색메소드 호출
+                searchBookPrompt();
+            }
+            else {
+                System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+        }
+    }
+
 }
