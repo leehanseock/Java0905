@@ -12,35 +12,45 @@ public class BookManageView {
 
     //메뉴 출력 메소드
     public void showMenu() {
-        System.out.println("============================도서 관리 시스템============================");
-        System.out.println("Menu : 1. 도서 등록 2. 도서 조회 3. 도서 정보 수정 4. 도서 정보 삭제 5. 도서 정보 출력");
-        System.out.print("메뉴 선택 : ");
-        try {
-            int answer00 = input02.nextInt();
-            switch (answer00) {
-                case 1:
-                    System.out.println("1번 도서 등록 선택");
-                    addBookPrompt();
-                    break;
-                case 2:
-                    System.out.println("2번 도서 조회 선택");
-                    searchBookPrompt();
-                    break;
-                case 3:
-                    System.out.println("3번 도서 정보 수정 선택");
-                    break;
-                case 4:
-                    System.out.println("4번 도서 정보 삭제 선택");
-                    break;
-                case 5:
-                    System.out.println("5번 도서 정보 출력 선택");
-                    break;
-                default:
-                    System.out.println("유효하지 않은 옵션");
-                    break;
+        //while문 돌리기 위한 boolean 변수 선언
+        boolean loop = true;
+
+        while(loop){
+            System.out.println("=======================================도서 관리 시스템=======================================");
+            System.out.println("Menu : 1. 도서 등록 2. 도서 조회 3. 도서 정보 수정 4. 도서 정보 삭제 5. 도서 정보 출력 (0. 시스템 종료)");
+            System.out.print("메뉴 선택 : ");
+            try {
+                int answer00 = input02.nextInt();
+                switch (answer00) {
+                    case 0:
+                        System.out.println("0번 시스템 종료 선택");
+                        System.out.println("시스템이 종료되었습니다.");
+                        loop = false;
+                        break;
+                    case 1:
+                        System.out.println("1번 도서 등록 선택");
+                        addBookPrompt();
+                        break;
+                    case 2:
+                        System.out.println("2번 도서 조회 선택");
+                        searchBookPrompt();
+                        break;
+                    case 3:
+                        System.out.println("3번 도서 정보 수정 선택");
+                        break;
+                    case 4:
+                        System.out.println("4번 도서 정보 삭제 선택");
+                        break;
+                    case 5:
+                        System.out.println("5번 도서 정보 출력 선택");
+                        break;
+                    default:
+                        System.out.println("유효하지 않은 옵션");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
             }
-        } catch (InputMismatchException e) {
-            System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
         }
     }
 
