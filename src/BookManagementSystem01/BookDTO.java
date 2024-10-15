@@ -79,14 +79,12 @@ public class BookDTO {
 
     @Override
     public String toString() {
-        return "BookDTO{" +
-                "ISBN=" + ISBN +
-                ", 도서명='" + bookName + '\'' +
-                ", 저자명='" + author + '\'' +
-                ", 출판사='" + publisher + '\'' +
-                ", 가격=" + price +
-                ", 발행일=" + publicationDate +
-                ", 쪽수=" + pages +
-                '}';
+        return  "ISBN:" + ISBN +
+                "| 도서명:'" + bookName + '\'' +
+                "| 저자명:'" + author + '\'' +
+                "| 출판사:'" + publisher + '\'' +
+                "| 가격:" + price +
+                "| 발행일:" + publicationDate +
+                "| 쪽수:" + pages;
     }
 }
