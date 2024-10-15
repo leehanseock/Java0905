@@ -180,7 +180,18 @@ public class BookManageService {
 
     //Delete
     public void deleteBook(){
-        System.out.println("test");
+        System.out.println("삭제하려는 도서의 ISBN 13자리 숫자를 입력해주십시오.");
+        try {
+            long deleteISBN = input01.nextLong();
+            for (int j = 0 ; j < BookList.size() ; j++){
+                if (BookList.get(j).getISBN() == deleteISBN) {
+                    BookList.remove(BookList.get(j));
+                }
+            }
+        } catch(InputMismatchException e) {
+            System.out.println("잘못된 입력입니다.");
+            input01.next();
+        }
     }
 
     //초기화
