@@ -194,6 +194,13 @@ public class BookManageService {
         }
     }
 
+    //Print -시스템 보유 도서 목록 출력-
+    public void printBookList(){
+        for (int k = 0; k < BookList.size() ; k++){
+            System.out.printf("[%d] %s \n",k+1, BookList.get(k).toString());
+        }
+    }
+
     //초기화
     public void initiateBook(){
         BookList.add(new BookDTO(9788936434120L, "소년이 온다", "한강","창비", 15000, LocalDate.of(2014,5,19), 216));

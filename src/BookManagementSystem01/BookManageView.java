@@ -44,6 +44,7 @@ public class BookManageView {
                         break;
                     case 5:
                         System.out.println("5번 도서 정보 출력 선택");
+                        printBookPrompt();
                         break;
                     default:
                         System.out.println("유효하지 않은 옵션");
@@ -143,6 +144,13 @@ public class BookManageView {
         } catch (NumberFormatException e) {
             System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
         }
+    }
+
+    //출력 확인 메시지 출력 및 보유 도서 목록 출력 메소드 호출
+    public void printBookPrompt(){
+        System.out.println("현재 시스템에 등록된 도서 목록을 출력합니다.");
+        System.out.println("================================================");
+        service.printBookList();
     }
 
 }
