@@ -1,5 +1,7 @@
 package ch10.ex10_4;
 
+import java.util.ArrayList;
+
 public class MainShape {
     public static void main(String[] args) {
         Square s = new Square();
@@ -9,12 +11,13 @@ public class MainShape {
         Circle c = new Circle();
         c.name = "원";
 
-        Shape s1 = new Square();
-        //부모의 타입으로 업 캐스팅 배열 생성
-        Shape[] shapes = {s, t, c};
+        ArrayList<Shape> shapes = new ArrayList<Shape>();
+        shapes.add(s);
+        shapes.add(t);
+        shapes.add(c);
 
-        for (int i = 0 ; i < shapes.length ; i++){
-            System.out.printf("인덱스 번호 %d번의 도형 이름: %s\n", i, shapes[i].name);
+        for (int i = 0 ; i < shapes.size() ; i++){
+            System.out.printf("인덱스 번호 %d번의 도형 이름: %s\n", i, shapes.get(i).name);
         }
     }
 }
