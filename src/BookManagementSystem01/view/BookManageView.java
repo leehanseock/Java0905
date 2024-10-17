@@ -1,4 +1,6 @@
-package BookManagementSystem01;
+package BookManagementSystem01.view;
+import BookManagementSystem01.service.BookManageService;
+
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
