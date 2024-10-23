@@ -47,6 +47,7 @@ public class BookManageView {
                         break;
                     case 5:
                         System.out.println("5번 도서 정보 출력 선택");
+                        printBookListPrompt();
                         break;
                     default:
                         System.out.println("유효하지 않은 옵션");
@@ -151,6 +152,11 @@ public class BookManageView {
     //도서 정보 수정 여부를 묻는 메소드
     public void updateBookPrompt(){
         service.updateBook();
+    }
+
+    //도서 목록 출력 메소드 호출
+    public void printBookListPrompt(){
+        service.printBookList();
     }
 
 }

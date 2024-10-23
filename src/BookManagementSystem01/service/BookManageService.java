@@ -278,6 +278,13 @@ public class BookManageService {
         }
     }
 
+    //Print
+    public void printBookList(){
+        for (int i = 0; i < BookList.size(); i++) {
+            System.out.printf("[%d] %s \n", i + 1, BookList.get(i).toString());
+        }
+    }
+
     //초기화
     public void initiateBook() {
         BookList.add(new BookDTO(9788936434120L, "소년이 온다", "한강", "창비", 15000, LocalDate.of(2014, 5, 19), 216));
