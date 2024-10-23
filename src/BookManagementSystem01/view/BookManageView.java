@@ -1,4 +1,6 @@
-package BookManagementSystem01;
+package BookManagementSystem01.view;
+import BookManagementSystem01.service.BookManageService;
+
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -37,6 +39,7 @@ public class BookManageView {
                         break;
                     case 3:
                         System.out.println("3번 도서 정보 수정 선택");
+                        updateBookPrompt();
                         break;
                     case 4:
                         System.out.println("4번 도서 정보 삭제 선택");
@@ -147,23 +150,7 @@ public class BookManageView {
 
     //도서 정보 수정 여부를 묻는 메소드
     public void updateBookPrompt(){
-        System.out.println("시스템에서 수정할 도서가 있으십니까?(y/n)");
-        try {
-            //사용자 입력
-            String answer04 = input02.next();
-            //사용자 입력이 y나 Y일 때
-            if (answer04.equalsIgnoreCase("y")) {
-                //서비스 메소드의 도서 삭제 메소드 호출
-                service.updateBook();}
-            else if (answer04.equalsIgnoreCase("n")) {
-                System.out.println("서비스 종료");}
-            else {
-                System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
-        }
-
+        service.updateBook();
     }
 
 }

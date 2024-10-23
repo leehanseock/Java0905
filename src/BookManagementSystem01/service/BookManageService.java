@@ -1,4 +1,6 @@
-package BookManagementSystem01;
+package BookManagementSystem01.service;
+import BookManagementSystem01.dto.BookDTO;
+
 import java.awt.print.Book;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -38,7 +40,6 @@ public class BookManageService {
         try {
             //공백있는 제목을 받기위해 nextLine 사용
             bookName = input01.nextLine();
-            input01.nextLine();
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다.");
             input01.next();
@@ -48,7 +49,6 @@ public class BookManageService {
         String author = "";
         try {
             author = input01.nextLine();
-            input01.nextLine();
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다.");
             input01.next();
@@ -58,7 +58,6 @@ public class BookManageService {
         String publisher = "";
         try {
             publisher = input01.nextLine();
-            input01.nextLine();
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다.");
             input01.next();
@@ -101,7 +100,7 @@ public class BookManageService {
             }
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다.");
-            input01.next();
+            input01.nextLine();
         }
 
         BookDTO book = new BookDTO(ISBN, bookName, author, publisher, price, publicationDate, pages);
@@ -126,6 +125,7 @@ public class BookManageService {
                     long searchISBN = 0;
                     //사용자로부터 검색어 입력받기(ISBN 13자)
                     searchISBN = input01.nextLong();
+                    input01.nextLine();
                     for (BookDTO searched : BookList) {
                         if (searched.getISBN() == searchISBN) {
                             searchResult.add(searched);
@@ -175,12 +175,83 @@ public class BookManageService {
             }
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+            input01.nextLine();
         }
     }
 
     //Update
     public void updateBook() {
-        System.out.println("test");
+        for (int i = 0; i < BookList.size(); i++) {
+            System.out.printf("[%d] %s \n", i + 1, BookList.get(i).toString());
+        }
+        System.out.println("시스템에서 수정할 도서가 있으시면 해당 도서의 ISBN 번호를 입력해주십시오.");
+        long toUpdate = 0;
+        //사용자로부터 ISBN 13자 입력받기
+        toUpdate = input01.nextLong();
+        input01.nextLine();
+        for (int i = BookList.size() - 1; i >= 0; i--) {
+            if (BookList.get(i).getISBN() == toUpdate) {
+                System.out.printf("[%d] %s \n", i + 1, BookList.get(i).toString());
+                System.out.println("어떤 정보를 수정하시겠습니까?");
+                //String bookName, String author, String publisher, int price, LocalDate publicationDate, int pages
+                System.out.println("Menu : 1. 도서명 2. 저자명 3. 출판사 4. 가격 5. 발행일 6. 쪽수");
+                int choice = input01.nextInt();
+                input01.nextLine();
+                try {
+                    switch (choice) {
+                        case 1:
+                            System.out.println("도서명을 입력해주십시오:");
+                            String newBookName = input01.nextLine();
+                            BookList.get(i).setBookName(newBookName);
+                            break;
+                        case 2:
+                            System.out.println("저자명을 입력해주십시오:");
+                            String newAuthor = input01.nextLine();
+                            BookList.get(i).setAuthor(newAuthor);
+                            break;
+                        case 3:
+                            System.out.println("출판사명을 입력해주십시오:");
+                            String newPublisher = input01.nextLine();
+                            BookList.get(i).setPublisher(newPublisher);
+                            break;
+                        case 4:
+                            System.out.println("가격을 입력해주십시오:");
+                            int newPrice = input01.nextInt();
+                            input01.nextLine();
+                            BookList.get(i).setPrice(newPrice);
+                            break;
+                        case 5:
+                            System.out.println("발행일을 입력해주십시오 (예: 2024-10-10):");
+                            try {
+                                String newPublicationDate = input01.next();
+                                // 문자열을 LocalDate로 변환
+                                LocalDate convertedDate = LocalDate.parse(newPublicationDate);
+                                BookList.get(i).setPublicationDate(convertedDate);
+                            } catch (InputMismatchException e) {
+                                System.out.println("잘못된 입력입니다.");
+                                input01.next();
+                            } catch (DateTimeParseException e) {
+                                System.out.println("날짜 형식이 잘못되었습니다. YYYY-MM-DD 형식으로 입력해주세요.");
+                            }
+                            break;
+                        case 6:
+                            System.out.println("쪽수를 입력해주십시오:");
+                            int newPages = input01.nextInt();
+                            input01.nextLine();
+                            BookList.get(i).setPages(newPages);
+                            break;
+                        default:
+                            System.out.println("유효하지 않은 옵션");
+                            break;
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+                    input01.nextLine();
+                }
+            }
+        }
+
+
     }
 
     //Delete
@@ -190,20 +261,19 @@ public class BookManageService {
             System.out.printf("[%d] %s \n", i + 1, BookList.get(i).toString());
         }
         System.out.println("시스템에서 삭제할 도서가 있으시면 해당 도서의 ISBN 번호를 입력해주십시오.");
-        long todelete = 0;
-        //사용자로부터 검색어 입력받기(ISBN 13자)
-        todelete = input01.nextLong();
+        long toDelete = 0;
+        //사용자로부터 ISBN 13자 입력받기
+        toDelete = input01.nextLong();
         //사용자로부터 입력받은 ISBN과 일치하는 도서 정보 삭제
-        for (int i = BookList.size()-1; i >=0; i--) {
-            if (BookList.get(i).getISBN() == todelete) {
+        for (int i = BookList.size() - 1; i >= 0; i--) {
+            if (BookList.get(i).getISBN() == toDelete) {
                 BookList.remove(i);
             }
         }
         //성공적인 삭제 확인(ArrayList 안의 원소 개수가 줄었는지 체크)
-        if (BookList.size() == originalSize-1){
+        if (BookList.size() == originalSize - 1) {
             System.out.println("선택하신 도서 정보가 시스템에서 삭제 되었습니다.");
-        }
-        else {
+        } else {
             System.out.println("해당 ISBN 번호와 일치하는 도서가 존재하지 않습니다.");
         }
     }
