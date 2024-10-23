@@ -1,6 +1,4 @@
-package BookManagementSystem01.view;
-import BookManagementSystem01.service.BookManageService;
-
+package BookManagementSystem01;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -17,7 +15,7 @@ public class BookManageView {
         //while문 돌리기 위한 boolean 변수 선언
         boolean loop = true;
 
-        while(loop){
+        while (loop) {
             System.out.println("=======================================도서 관리 시스템=======================================");
             System.out.println("Menu : 1. 도서 등록 2. 도서 조회 3. 도서 정보 수정 4. 도서 정보 삭제 5. 도서 정보 출력 (0. 시스템 종료)");
             System.out.print("메뉴 선택 : ");
@@ -46,7 +44,6 @@ public class BookManageView {
                         break;
                     case 5:
                         System.out.println("5번 도서 정보 출력 선택");
-                        printBookPrompt();
                         break;
                     default:
                         System.out.println("유효하지 않은 옵션");
@@ -148,11 +145,25 @@ public class BookManageView {
         }
     }
 
-    //출력 확인 메시지 출력 및 보유 도서 목록 출력 메소드 호출
-    public void printBookPrompt(){
-        System.out.println("현재 시스템에 등록된 도서 목록을 출력합니다.");
-        System.out.println("================================================");
-        service.printBookList();
+    //도서 정보 수정 여부를 묻는 메소드
+    public void updateBookPrompt(){
+        System.out.println("시스템에서 수정할 도서가 있으십니까?(y/n)");
+        try {
+            //사용자 입력
+            String answer04 = input02.next();
+            //사용자 입력이 y나 Y일 때
+            if (answer04.equalsIgnoreCase("y")) {
+                //서비스 메소드의 도서 삭제 메소드 호출
+                service.updateBook();}
+            else if (answer04.equalsIgnoreCase("n")) {
+                System.out.println("서비스 종료");}
+            else {
+                System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+        }
+
     }
 
 }

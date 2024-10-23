@@ -180,7 +180,7 @@ public class BookManageService {
 
     //Update
     public void updateBook() {
-        System.out.println("Test");
+        System.out.println("test");
     }
 
     //Delete
