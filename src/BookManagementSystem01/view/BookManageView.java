@@ -54,8 +54,8 @@ public class BookManageView {
                         break;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
-                break;
+                input02.next();
+                System.out.println("잘못된 입력입니다. 메뉴 번호만 입력해 주십시오.");
             }
         }
     }
