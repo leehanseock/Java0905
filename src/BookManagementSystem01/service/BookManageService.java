@@ -182,6 +182,7 @@ public class BookManageService {
     //Update
     public void updateBook(long passedNum2) {
         for (int i = BookList.size() - 1; i >= 0; i--) {
+            //View에서 사용자로 입력받은 ISBN번호와 ArrayList 안의 각 객체별 ISBN번호 비교
             if (BookList.get(i).getISBN() == passedNum2) {
                 System.out.printf("[%d] %s \n", i + 1, BookList.get(i).toString());
                 System.out.println("어떤 정보를 수정하시겠습니까?");

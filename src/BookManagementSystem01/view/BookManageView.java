@@ -165,5 +165,4 @@ public class BookManageView {
     public void printBookListPrompt(){
         service.printBookList();
     }
-
 }
