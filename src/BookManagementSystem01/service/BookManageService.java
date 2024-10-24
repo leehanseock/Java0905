@@ -180,17 +180,9 @@ public class BookManageService {
     }
 
     //Update
-    public void updateBook() {
-        for (int i = 0; i < BookList.size(); i++) {
-            System.out.printf("[%d] %s \n", i + 1, BookList.get(i).toString());
-        }
-        System.out.println("시스템에서 수정할 도서가 있으시면 해당 도서의 ISBN 번호를 입력해주십시오.");
-        long toUpdate = 0;
-        //사용자로부터 ISBN 13자 입력받기
-        toUpdate = input01.nextLong();
-        input01.nextLine();
+    public void updateBook(long passedNum2) {
         for (int i = BookList.size() - 1; i >= 0; i--) {
-            if (BookList.get(i).getISBN() == toUpdate) {
+            if (BookList.get(i).getISBN() == passedNum2) {
                 System.out.printf("[%d] %s \n", i + 1, BookList.get(i).toString());
                 System.out.println("어떤 정보를 수정하시겠습니까?");
                 //String bookName, String author, String publisher, int price, LocalDate publicationDate, int pages
@@ -245,7 +237,7 @@ public class BookManageService {
                             break;
                     }
                 } catch (InputMismatchException e) {
-                    System.out.println("잘못된 입력입니다. y나 n으로만 답해주십시오.");
+                    System.out.println("잘못된 입력입니다.");
                     input01.nextLine();
                 }
             }

@@ -151,7 +151,14 @@ public class BookManageView {
 
     //도서 정보 수정 여부를 묻는 메소드
     public void updateBookPrompt(){
-        service.updateBook();
+        //도서 목록 출력
+        service.printBookList();
+        System.out.println("시스템에서 수정할 도서가 있으시면 해당 도서의 ISBN 번호를 입력해주십시오.");
+        long toUpdate = 0;
+        //사용자로부터 ISBN 13자 입력받기
+        toUpdate = input02.nextLong();
+        input02.nextLine();
+        service.updateBook(toUpdate);
     }
 
     //도서 목록 출력 메소드 호출
