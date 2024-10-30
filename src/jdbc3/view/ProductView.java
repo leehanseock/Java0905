@@ -28,4 +28,11 @@ public class ProductView {
         }
 
     }
+
+    public static void printView(ArrayList<Product> arrayList) {
+        ProductView view = new ProductView();
+        view.printHeader();
+        view.printProduct(arrayList);
+        view.printFooter();
+    }
 }
