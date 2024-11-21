@@ -1,4 +1,4 @@
-package ch11.ex11_05;
+package ch11.ex11_05_06;
 
 public class Bicycle implements Vehicle {
     @Override
