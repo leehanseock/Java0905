@@ -30,10 +30,8 @@ public class MainController {
                 productService.search(s1, s2);
                 break;
             case 2:
-
                 break;
             case 3:
-
                 break;
         }
 
