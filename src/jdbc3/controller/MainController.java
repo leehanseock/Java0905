@@ -35,7 +35,6 @@ public class MainController {
                 break;
         }
 
-
         s1.close();
         s2.close();
     }
