@@ -10,14 +10,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProductRepository {
-    public static ArrayList<Product> getList(){
-        ArrayList<Product> arrducts = new ArrayList<>();
+    public static ArrayList<Product> getList(String type, String searchWord){
+        ArrayList<Product> arrList = new ArrayList<>();
         Connection con = JDBCConnector.getConnection();
-        String sql = "select * from 제품";
+        String sql = "select * from 제품 where "+type+" like ?";
         //문장객체
         try {
-            PreparedStatement pstnt = con.prepareStatement(sql);//여기서 클로즈 한다.
-            ResultSet rs = pstnt.executeQuery();
+            PreparedStatement pstmt = con.prepareStatement(sql);//여기서 클로즈 한다.
+            pstmt.setString(1, "%"+searchWord+"%");
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
                 product.setProNum(rs.getString("제품번호"));//제품번호 대신 숫자도 ㄱㄴ
@@ -25,7 +26,7 @@ public class ProductRepository {
                 product.setProStock(rs.getInt("재고량"));//제품번호 대신 숫자도 ㄱㄴ
                 product.setProPrice(rs.getInt("단가"));//제품번호 대신 숫자도 ㄱㄴ
                 product.setProNum(rs.getString("제조업체"));//제품번호 대신 숫자도 ㄱㄴ
-                arrducts.add(product);
+                arrList.add(product);
             }
             rs.close();//리소스 수거
             con.close();//리소스 수거
@@ -33,6 +34,6 @@ public class ProductRepository {
             throw new RuntimeException(e);
         }
 
-        return arrducts;
+        return arrList;
     }
 }
