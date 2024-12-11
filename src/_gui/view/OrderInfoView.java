@@ -1,9 +1,13 @@
 package _gui.view;
 
+import _gui.entitiy.OrderEntity;
+import _gui.repository.OrderRepository;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class OrderInfoView extends JPanel{
     JPanel panN = new JPanel(new GridLayout(2,1));
@@ -36,6 +40,7 @@ public class OrderInfoView extends JPanel{
         addPan2();
 // 테이블 추가 호출
         addTable();
+        initList();
     }
 
     public void addPan1(){
@@ -68,5 +73,21 @@ public class OrderInfoView extends JPanel{
 
         JScrollPane scrollPane = new JScrollPane(table);
         panC.add(scrollPane, BorderLayout.CENTER);
+    }
+
+    public void initList(){
+        OrderRepository orderRepository = new OrderRepository();
+        ArrayList<OrderEntity> orderList = orderRepository.getOrderList();
+        tableModel.setRowCount(orderList.size());
+        int i = 0;
+        for (OrderEntity orderEntity : orderList){
+            tableModel.setValueAt(orderEntity.getOrderNum(), i, 0);
+            tableModel.setValueAt(orderEntity.getCustomerName(), i, 1);
+            tableModel.setValueAt(orderEntity.getProductName(), i, 2);
+            tableModel.setValueAt(orderEntity.getAmount(), i, 3);
+            tableModel.setValueAt(orderEntity.getDestination(), i, 4);
+            tableModel.setValueAt(orderEntity.getOrderDate(), i, 5);
+            i++;
+        }
     }
 }

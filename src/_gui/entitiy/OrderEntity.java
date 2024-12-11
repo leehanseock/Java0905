@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 public class OrderEntity {
     private String orderNum;
     private String orderCustomer;
+    private String customerName;
+    private String productName;
     private String orderProduct;
     private int amount;
     private String destination;
@@ -58,5 +60,20 @@ public class OrderEntity {
     public void setOrderDate(Timestamp orderDate) {
         this.orderDate = orderDate;
     }
-}
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+}
