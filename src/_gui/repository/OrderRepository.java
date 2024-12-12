@@ -39,4 +39,24 @@ public class OrderRepository {
         }
         return orderList;
     }
+
+    public void insertOrder(OrderEntity orderEntity){
+        String sql = "insert into 주문  values(?, ?, ?, ?, ?, ?)";
+        Connection con = JDBCConnector.getConnection();
+        try {
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, orderEntity.getOrderNum());
+            pstmt.setString(2, orderEntity.getOrderCustomer());
+            pstmt.setString(3, orderEntity.getOrderProduct());
+            pstmt.setInt(4, orderEntity.getAmount());
+            pstmt.setString(5, orderEntity.getDestination());
+            pstmt.setTimestamp(6, orderEntity.getOrderDate());
+            pstmt.executeUpdate();
+
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);;
+        }
+
+    }
 }
